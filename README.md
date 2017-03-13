@@ -8,9 +8,9 @@ Implementation details:
   Infrastructure and Topology Setup:	One of the crucial part of the project was to choose a suitable topology for clear demonstration of load balancing. But even then we wanted to test our load balancing module with a more challenging infrastructure. So, we joined two different topologies created in two different mininet VMs with GRE tunnel and VxLAN tunnel. Here are the steps followed to create the mininet topology. 
   
   Step 1: Created the two topologies in two different mininet VMs by editing a custom topology python file. The python file was easy to edit as it contained straight forward API calls like addLink(), addHost(), addSwitch(). The function of each API was as expect congruent with their names. 
-addLink() - This API was used to create a link between either two switches or one switch and one host. 
-addHost() - This API was used to add hosts to the network. While adding a host, it was also possible to assign a static IP address to the host.
-addSwitch() - This API was used to add a switch to the network. 
+-- addLink() - This API was used to create a link between either two switches or one switch and one host. 
+-- addHost() - This API was used to add hosts to the network. While adding a host, it was also possible to assign a static IP address to the host.
+-- addSwitch() - This API was used to add a switch to the network. 
   
   Step 2. Then run the mininet command to create the topology from the custom python file. Mention the IP address of the floodlight VM in both the command for both the mininet topology creation. For us, the IP address of the Floodlight VM was 192.168.56.101 and the name of custom topology pyhton file in both the VMs is topology4.py. Following is the command to create the custom topology in both the mininet VMs. i.e. sudo mn --custom topology4.py --topo mytopo--controller=remote,ip=192.168.56.101,port=6653
   
