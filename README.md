@@ -1,11 +1,14 @@
 # Improved-Dijkstra-s-Algorithm-Based-Load-Balancing-SDN-Application
 
-Overview: The project extends the Dijkstra’s algorithm and considers not only the edge weights but also the node weights and bandwidth of each network link. We used python to develop our load balancer application, Restful APIs and networkx module to gather all the network information mininet to generate our network topology and testing tools like Iperf, ping and wireshark to compare our load balancer with the original load balancer of floodlight.
+# Overview: 
+The project extends the Dijkstra’s algorithm and considers not only the edge weights but also the node weights and bandwidth of each network link. We used python to develop our load balancer application, Restful APIs and networkx module to gather all the network information mininet to generate our network topology and testing tools like Iperf, ping and wireshark to compare our load balancer with the original load balancer of floodlight.
 
-Introduction: At present, network traffic is growing fast and complex as enterprises need to purchase more equipment to handle this complex network. The online services like e-commerce, websites, and social networks frequently use multiple servers to get high reliability and accessibility. Network congestion and server overload are the serious problems faced by the enterprises network. IP services uses Open Shortest Path First(OSPF), the computation is based on Dijkstra's algorithm which calculates the shortest path within the network with disadvantage is only edge weights is considered which makes it less efficient. In our extended dijkstra's based load balancer we consider not only the edge weights but also the node weights and bandwidth.
+# Introduction: 
+At present, network traffic is growing fast and complex as enterprises need to purchase more equipment to handle this complex network. The online services like e-commerce, websites, and social networks frequently use multiple servers to get high reliability and accessibility. Network congestion and server overload are the serious problems faced by the enterprises network. IP services uses Open Shortest Path First(OSPF), the computation is based on Dijkstra's algorithm which calculates the shortest path within the network with disadvantage is only edge weights is considered which makes it less efficient. In our extended dijkstra's based load balancer we consider not only the edge weights but also the node weights and bandwidth.
 
-Implementation details: 
-  Infrastructure and Topology Setup:	One of the crucial part of the project was to choose a suitable topology for clear demonstration of load balancing. But even then we wanted to test our load balancing module with a more challenging infrastructure. So, we joined two different topologies created in two different mininet VMs with GRE tunnel and VxLAN tunnel. Here are the steps followed to create the mininet topology. 
+# Implementation details: 
+
+Infrastructure and Topology Setup:	One of the crucial part of the project was to choose a suitable topology for clear demonstration of load balancing. But even then we wanted to test our load balancing module with a more challenging infrastructure. So, we joined two different topologies created in two different mininet VMs with GRE tunnel and VxLAN tunnel. Here are the steps followed to create the mininet topology. 
   
   Step 1: Created the two topologies in two different mininet VMs by editing a custom topology python file. The python file was easy to edit as it contained straight forward API calls like addLink(), addHost(), addSwitch(). The function of each API was as expect congruent with their names. 
 -- addLink() - This API was used to create a link between either two switches or one switch and one host.
@@ -61,7 +64,7 @@ Firstly, with inbuilt Dijkstra's algorithm
 Secondly, with Bandwidth scheme, and
 Thirdly, with Node weight / Edge weight scheme
 
-Implemented methods of load balancing: 
+# Implemented methods of load balancing: 
 There are many methods and parameters that can be used to perform load balancing. But, through this project, we have tried to implement two different scheme of load balancing i.e Bandwidth scheme and Node weight / Edge weight scheme.
 
   1. Bandwidth Scheme: In this scheme of load balancing we have successfully improved the routing performance of the network compared to the default load balancing module performance. We do so by adding all the transmission rates of all the output port of all the switches in a link  which gives the total end to end transmission rates (totalTx) of the shortest paths. Then we find the path with maximum totalTx which becomes the best current path. 
