@@ -64,15 +64,15 @@ Thirdly, with Node weight / Edge weight scheme
 Implemented methods of load balancing: 
 There are many methods and parameters that can be used to perform load balancing. But, through this project, we have tried to implement two different scheme of load balancing i.e Bandwidth scheme and Node weight / Edge weight scheme.
 
-1. Bandwidth Scheme: In this scheme of load balancing we have successfully improved the routing performance of the network compared to the default load balancing module performance. We do so by adding all the transmission rates of all the output port of all the switches in a link  which gives the total end to end transmission rates (totalTx) of the shortest paths. Then we find the path with maximum totalTx which becomes the best current path. 
+  1. Bandwidth Scheme: In this scheme of load balancing we have successfully improved the routing performance of the network compared to the default load balancing module performance. We do so by adding all the transmission rates of all the output port of all the switches in a link  which gives the total end to end transmission rates (totalTx) of the shortest paths. Then we find the path with maximum totalTx which becomes the best current path. 
 
-2. Node Weight / Edge Weight Scheme: In this scheme of load balancing we have successfully improved the routing performance of the network compared to the default load balancing module performance. Here I define terms which is very useful in this scheme. 
+  2. Node Weight / Edge Weight Scheme: In this scheme of load balancing we have successfully improved the routing performance of the network compared to the default load balancing module performance. Here I define terms which is very useful in this scheme. 
 
--- The Node weight is defined as the amount of time a switch takes to process a certain number of packets (i.e. Latency of switch). 
+  -- The Node weight is defined as the amount of time a switch takes to process a certain number of packets (i.e. Latency of switch). 
 
--- The Edge weight is defined as the amount of time a link takes to transmit a certain number of packets (i.e. Latency of links). 
+  -- The Edge weight is defined as the amount of time a link takes to transmit a certain number of packets (i.e. Latency of links). 
 
--- Therefore, the End-to-End latency is equal to the sum of total Node weights and total Edge weights. Using these 
+  -- Therefore, the End-to-End latency is equal to the sum of total Node weights and total Edge weights. Using these 
 
 
 
