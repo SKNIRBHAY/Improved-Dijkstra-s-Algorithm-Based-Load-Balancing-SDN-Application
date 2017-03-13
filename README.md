@@ -34,7 +34,9 @@ Flow of implementation: We have implemented the load balancing module as an appl
 -- First the Floodlight VM and both the Mininet VMs are started. Different static IP addresses are assigned to all the VMs. In our case the assigned IP addresses are:
 
 Floodlight VM - 192.168.56.101
+
 Mininet_1 VM - 192.168.56.102
+
 Mininet_2 VM - 192.168.56.103
 
 -- Then the desired topology is created in both the Mininet VMs and connected through GRE and VxLAN tunnels. 
