@@ -77,5 +77,24 @@ There are many methods and parameters that can be used to perform load balancing
 
   -- Therefore, the End-to-End latency is equal to the sum of total Node weights and total Edge weights. Using these 
 
+# Conclusion: 
+In the original load balancer of floodlight only the edge weight is considered, we further changed its code two consider the node weight and bandwidth. After testing and comparing the results we found out that our load balancer design outperforms the original load balancer of the floodlight.
+
+# References: 
+-- Jehn-Ruey Jiang, Hsin-Wen Huang, Ji-Hau Liao, and Szu-Yuan Chen (2014). Extending Dijkstra’s Shortest   Path Algorithm for Software Defined Networking. Asia-Pacific Network Operation and Management Symposium (APNOMS)  
+
+-- Brent Salisbury (2012, Jul 2). Configuring VXLAN and GRE Tunnels on OpenvSwitch. http://networkstatic.net/configuring-vxlan-and-gre-tunnels-on-openvswitch/
+
+-- GRE and VXLAN encapsulation methods (http://akanda.io/tip-of-the-week/tip-5-gre-and-vxlan-encapsulation-methods/)
+
+-- What is the floodlight controller? (https://www.sdxcentral.com/sdn/definitions/sdn-controllers/open-source-sdn-controllers/what-is-floodlight-controller/)
+
+-- Floodlight (http://www.projectfloodlight.org/floodlight/)
+
+-- Chris  Partsenidis. What is iPerf and how is it used? (http://searchnetworking.techtarget.com/answer/What-is-iPerf-and-how-is-it-used) 
+
+-- Dijkstra’s Algorithm (https://en.wikipedia.org/wiki/Dijkstra's_algorithm)
+
+-- What are SDN Northbound APIs?:(https://www.sdxcentral.com/sdn/definitions/north-bound-interfaces-api/)
 
 
