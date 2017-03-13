@@ -16,11 +16,11 @@ Implementation details:
   
   Step 3. Once both the VMs are connected to the Floodlight VM, the next step is to create a GRE tunnel and VxLAN tunnel to connect both the topologies. Here are the commands to do so: 
 GRE tunnel - The IP address of Mininet_1 VM is 192.168.56.102 and of Mininet_2 VM is 192.168.56.103. The connection is established between s21 of Mininet_1 to s17 of the  Mininet_2. 
-- sh ovs-vsctl add-port s21 hello2 -- set interface hello2 type=gre option:remote_ip=192.168.56.103
-- sh ovs-vsctl add-port s17 hello2 -- set interface hello2 type=gre option:remote_ip=192.168.56.102
+-- sh ovs-vsctl add-port s21 hello2 -- set interface hello2 type=gre option:remote_ip=192.168.56.103
+-- sh ovs-vsctl add-port s17 hello2 -- set interface hello2 type=gre option:remote_ip=192.168.56.102
 VxLAN tunnel - The IP address of Mininet_1 VM is 192.168.56.102 and of Mininet_2 VM is 192.168.56.103. The connection is established between s18 of Mininet_1 to s22 of the  Mininet_2.
-- sh ovs-vsctl add-port s18 hello1 -- set interface hello1 type=vxlan option:remote_ip=192.168.56.103
-- sh ovs-vsctl add-port s22 hello1 -- set interface hello1 type=vxlan option:remote_ip=192.168.56.10
+-- sh ovs-vsctl add-port s18 hello1 -- set interface hello1 type=vxlan option:remote_ip=192.168.56.103
+-- sh ovs-vsctl add-port s22 hello1 -- set interface hello1 type=vxlan option:remote_ip=192.168.56.10
 
 Flow of implementation: We have implemented the load balancing module as an application which interacts with the controller through RESTful (Representational State Transfer) API calls to collect data about the underlying network. Following is a step by step process of development and testing we have followed:
 
