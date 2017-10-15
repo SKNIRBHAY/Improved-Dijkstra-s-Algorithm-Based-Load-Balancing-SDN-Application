@@ -130,7 +130,7 @@ def findSwitchRoute():
 		nodeList = []
 
 	print("\n\nThe path: "),
-	print path;
+	print(path);
 
 ############################################################
 # Computation of total switch latency in all shortest paths
@@ -245,18 +245,18 @@ def systemCommand(cmd):
 def flowRule(currentNode, flowCount, inPort, outPort, staticFlowURL):
 	flow = {
 		'switch':"00:00:00:00:00:00:00:" + currentNode,
-	    "name":"flow" + str(flowCount),
-	    "cookie":"0",
-	    "priority":"32768",
-	    "in_port":inPort,
+	    	"name":"flow" + str(flowCount),
+	    	"cookie":"0",
+	    	"priority":"32768",
+	    	"in_port":inPort,
 		"eth_type": "0x0800",
 		"ipv4_src": h2,
 		"ipv4_dst": h1,
 		"eth_src": deviceMAC[h2],
 		"eth_dst": deviceMAC[h1],
-	    "active":"true",
-	    "actions":"output=" + outPort
-	}
+	    	"active":"true",
+	    	"actions":"output=" + outPort
+	       }
 
 	jsonData = json.dumps(flow)
 
@@ -268,18 +268,18 @@ def flowRule(currentNode, flowCount, inPort, outPort, staticFlowURL):
 
 	flow = {
 		'switch':"00:00:00:00:00:00:00:" + currentNode,
-	    "name":"flow" + str(flowCount),
-	    "cookie":"0",
-	    "priority":"32768",
-	    "in_port":outPort,
+	    	"name":"flow" + str(flowCount),
+	    	"cookie":"0",
+	    	"priority":"32768",
+		"in_port":outPort,
 		"eth_type": "0x0800",
 		"ipv4_src": h1,
 		"ipv4_dst": h2,
 		"eth_src": deviceMAC[h1],
 		"eth_dst": deviceMAC[h2],
-	    "active":"true",
-	    "actions":"output=" + inPort
-	}
+	    	"active":"true",
+	    	"actions":"output=" + inPort
+	       }
 
 	jsonData = json.dumps(flow)
 
@@ -406,9 +406,9 @@ h1 = "10.0.0." + str(h1)
 h2 = "10.0.0." + str(h2)
 
 while(1):
-	print "\nWhich Scheem of load balancing do you want? (Tx 'or' NW/EW/Latency): "
-	print "1. Band width scheme \n2. NW/EW scheme\n"
-	print "Press 1 or 2: ",
+	print("\nWhich Scheem of load balancing do you want? (Tx 'or' NW/EW/Latency): ")
+	print("1. Band width scheme \n2. NW/EW scheme\n")
+	print("Press 1 or 2: ", end='')
 	LBType = int(input())
 	if(LBType == 1 or LBType == 2):
 		break
