@@ -83,10 +83,6 @@ def linksInformation(data,s):
 	switchLinks[switchID]=links
 	print("The Graph: ")
 	print(list(G.edges()))
-	#print("The link is: ")
-	#print(links)
-	#print("The switchID:")
-	#print(switchID)
 	print("\n\nThe switchLinks: "),
 	print(switchLinks)
 	print("\n\nThe linkPort: "),
@@ -102,21 +98,12 @@ def findSwitchRoute():
 	nodeList = []
 	src = int(switch[h2].split(":",7)[7],16)
 	dst = int(switch[h1].split(":",7)[7],16)
-	#print("Source = "), 
-	#print src;
-	#print("Destination = "),
-	#print dst;
 	#temp = nx.all_shortest_paths(G, source=src, target=dst, weight=None)
 
 	for currentPath in nx.all_shortest_paths(G, source=src, target=dst, weight=None):
-		#print ("currentPath: "),
-		#print(currentPath);
 		for node in currentPath:
-
 			tmp = ""
 			if node < 17:
-				#print "str of hex of node:",
-				#print str(hex(node))
 				pathKey = pathKey + "0" + str(hex(node)).split("x",1)[1] + "::"
 				tmp = "00:00:00:00:00:00:00:0" + str(hex(node)).split("x",1)[1]
 			else:
@@ -140,7 +127,7 @@ def totalPathLatency():
 	url = "http://192.168.56.101:8080/wm/core/switch/all/flow/json"
 	getResponse(url,"findSwitchLatency")
 	findLinkLatency()
-	print "\n\nThe total PathLatency: ", pathLatency
+	print("\n\nThe total PathLatency: ", pathLatency)
 
 ########################################################################
 # Computation of total latency offered by the links in the shortest path
@@ -171,7 +158,6 @@ def findSwitchLatency(data):
 			tempByte = int(data[switch]['flows'][0]['byte_count'])
 			if tempByte == 0: tempByte = 1;
 			tempLatency += 100 * (tempSec/tempByte)
-		#print "Key: ", key
 		pathLatency[key] = tempLatency
 		tempLatency = 0
 
@@ -196,8 +182,6 @@ def getLinkCost():
 	global linkPorts
 
 	for key in path:
-		#print("Key: "),
-		#print(key)
 		start = switch[h2]
 		src = switch[h2]
 		srcShortID = src.split(":")[7]
@@ -209,26 +193,15 @@ def getLinkCost():
 				continue
 			else:
 				portKey = srcShortID + "::" + temp
-				#print("portkey: "),
-				#print(portKey)
 				portNumber = linkPorts[portKey].split("::")[0]
 				stats = "http://192.168.56.101:8080/wm/statistics/bandwidth/" + src + "/" + portNumber +"/json"
-				#print stats
 				getResponse(stats,"costComputaion")
 				srcShortID = temp
 				src = link
-				#print "srcShortID: ",
-				#print srcShortID;
-				#print "src: ",
-				#print src;
 		portKey = start.split(":")[7] + "::" + mid + "::" + switch[h1].split(":")[7]
 		finalLinkTX[key] = cost
 		cost = 0
 		portKey = ""
-	#print("portkey: "),
-	#print(portKey)
-	#print("cost: "),
-	#print(cost)
 	print("finalLinkTX: "),
 	print(finalLinkTX)
 
@@ -238,7 +211,6 @@ def getLinkCost():
 def systemCommand(cmd):
 	terminalProcess = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
 	terminalOutput, stderr = terminalProcess.communicate()
-	#print "\n***", terminalOutput, "\n"
 
 ###################################################
 # creating and pushing the flow rules 
@@ -318,7 +290,7 @@ def addFlow():
 		shortestPath = maxKey
 	if(LBType == 2):
 		shortestPath = min(pathLatency, key=pathLatency.get)
-	print "\n\nBest Shortest Path: ",shortestPath
+	print("\n\nBest Shortest Path: ",shortestPath)
 
 	currentNode = shortestPath.split("::",2)[0]
 	nextNode = shortestPath.split("::")[1]
@@ -399,7 +371,7 @@ h2 = ""
 
 print "Enter the source host"
 h1 = int(input())
-print "\nEnter the destination host"
+print("\nEnter the destination host")
 h2 = int(input())
 
 h1 = "10.0.0." + str(h1)
@@ -413,7 +385,7 @@ while(1):
 	if(LBType == 1 or LBType == 2):
 		break
 	else:
-		print "Wrong entry, try again !!! \n" 
+		print("Wrong entry, try again !!! \n")
 		continue
 
 ##############################
@@ -475,6 +447,6 @@ while True:
 		os.system('clear')
 
 	except KeyboardInterrupt:
-		print "Error Found !!! Please retry..."
+		print("Error Found !!! Please retry...")
 		break
 		exit()
